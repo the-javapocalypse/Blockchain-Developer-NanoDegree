@@ -62,3 +62,31 @@ Generally, the smaller and more centralized a blockchain network is, the more li
 n light of the increasing prevalence of Proof-of-Stake (PoS) consensus, is a 51% attack any easier or more difficult? In a way, it’s both. In PoS consensus, network validators compete to validate blocks by expending energy and holding the biggest stake. Therefore, theoretically, all someone needs to do to launch a 51% attack in a PoS network is to accrue over 51% of the network’s total circulating tokens. 
 
 However, even if someone were able to accrue 51% of the tokens, as a result of doing so, they’d have little incentive to attack the network. The majority token holder would be the worst hit by any drop in the token’s value resulting from the attack. Therefore, smaller PoW networks tend to be the prime targets for 51% attacks. 
+
+
+## Identity
+**Private Key** ----{Elliptical Curve Multiplication {one way hashing)}----> **Public Key** ----{RIPEMD (SHA256)}----> **Public Key Hash** ----{Base58Check}----> **Wallet Address**
+
+## Private Key
+A secret number that allows you to spend bitcoin from your wallet.
+
+## Public Key
+Publicly shareable key that cannot be used to spend bitcoin.
+
+## Wallet
+### Wallet Address
+A unique identifier for your wallet.
+
+### Wallet Types
+There are three types of wallets
+![Wallet Types](https://github.com/the-javapocalypse/Blockchain-Developer-NanoDegree/blob/main/Notes/wallet%20types.png?raw=true)
+
+#### 1. Non-deterministic Wallet
+(random wallets) A wallet where private keys are generated from random numbers.
+
+#### 2. Deterministic  Wallet
+A wallet where addresses, private keys, and public keys can be traced back to their original seed words.
+
+#### 3. Hierarchical Deterministic Wallet
+An advanced type of deterministic wallet that contains keys derived in a tree structure.
+
