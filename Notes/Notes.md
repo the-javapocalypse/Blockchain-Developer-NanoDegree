@@ -69,6 +69,10 @@ However, even if someone were able to accrue 51% of the tokens, as a result of d
 
 ## Private Key
 A secret number that allows you to spend bitcoin from your wallet.
+Same private key can be represented in 3 formats
+* HEX
+* WIF or Wallet Import Format (Base58Check)
+* WIF-Compressed (Base58Check added suffex 0x01 before encoding)
 
 ## Public Key
 Publicly shareable key that cannot be used to spend bitcoin.
@@ -83,10 +87,36 @@ There are three types of wallets
 
 #### 1. Non-deterministic Wallet
 (random wallets) A wallet where private keys are generated from random numbers.
+Random Number -> Private Key -> Public Key -> Wallet Address.
+Best practice to generate new wallet address for each transaction.
+Generally used where wallet addresses are generated from backend services and private keys are not derived from seeds.
+The Private Key is used to restore and gives full control to wallet address
 
 #### 2. Deterministic  Wallet
 A wallet where addresses, private keys, and public keys can be traced back to their original seed words.
+Can generate multiple private keys using the same seed
+Seed gives all the control so must be stored securely
+![Sequential Deterministic Wallet](https://github.com/the-javapocalypse/Blockchain-Developer-NanoDegree/blob/main/Notes/sequential%20wallets.png?raw=true)
 
-#### 3. Hierarchical Deterministic Wallet
+
+#### 3. Hierarchical Deterministic Wallet (HD Wallets)
 An advanced type of deterministic wallet that contains keys derived in a tree structure.
+A parent key can derive children keys which can further derive grand children keys and so on
+Can be shared partially or entirely (breaking a branch and sharing public and/or private key. We can also share upto certail levels (as it is a tree)
+Useful to separate spending eg, different departmental spending
+Subkey can generate more child keys
+All the keys tie back to one master key
+![HD Wallets](https://github.com/the-javapocalypse/Blockchain-Developer-NanoDegree/blob/main/Notes/hd%20wallets.png?raw=true)
 
+
+## Ways to Restore a Wallet
+### 1. Use a Seed
+One way to restore a wallet is using a seed. The ‘seed’ is the 12 words you were given when creating your wallet. If you can remember these words, you can use them to restore your wallet!
+
+### 2. Use a Private Key
+When restoring a wallet using a private key, there are 2 ways to do it. You can either import or sweep this key, and it’s useful to understand the difference.
+#### Import a Private Key
+When importing a private key, you'll have a source wallet and a destination wallet. The destination wallet is likely filled with a group of private keys already. To import the key you move the private key from the source wallet to the destination wallet. This results in you getting access to both the source wallet AND the destination wallet.
+
+#### Sweep a Private Key
+When you sweep a private key, you add a private key from a source wallet into the destination wallet. All the bitcoins that belong to that private key are swept from the source wallet over into the destination wallet. This is a little different than importing because it completely removes the funds from the original wallet. You’ll now only be using this new wallet to make future transactions.
