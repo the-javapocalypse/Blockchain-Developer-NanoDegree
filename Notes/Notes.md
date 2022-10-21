@@ -106,6 +106,7 @@ Can be shared partially or entirely (breaking a branch and sharing public and/or
 Useful to separate spending eg, different departmental spending
 Subkey can generate more child keys
 All the keys tie back to one master key
+
 ![HD Wallets](https://github.com/the-javapocalypse/Blockchain-Developer-NanoDegree/blob/main/Notes/hd%20wallets.png?raw=true)
 
 
@@ -120,3 +121,10 @@ When importing a private key, you'll have a source wallet and a destination wall
 
 #### Sweep a Private Key
 When you sweep a private key, you add a private key from a source wallet into the destination wallet. All the bitcoins that belong to that private key are swept from the source wallet over into the destination wallet. This is a little different than importing because it completely removes the funds from the original wallet. You’ll now only be using this new wallet to make future transactions.
+
+
+## Sign a Transaction
+Tx Input (amount transferred to my wallet) -> Convert to Tx Output (to spend) by proving ownership of wallet address through digitally signing the transaction using the private key
+
+## TX multiple inputs and outputs
+![Multi IO TX](https://github.com/the-javapocalypse/Blockchain-Developer-NanoDegree/blob/main/Notes/tx%20io.png?raw=true)
