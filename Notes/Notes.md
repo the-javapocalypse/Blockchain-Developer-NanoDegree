@@ -135,6 +135,7 @@ Network of bitcoin users creating and validating transactions
 
 ## Bitcoin Core
 Implementation of bitcoin that encompasses all of the software behind bitcoin
+![Bitcoin Core Networks](https://github.com/the-javapocalypse/Blockchain-Developer-NanoDegree/blob/main/Notes/bitcoin%20core%20networks.png?raw=true)
 
 ## Debug Console
 Tool that allows you to interact with data on the bitcoin blockchain
