@@ -128,3 +128,13 @@ Tx Input (amount transferred to my wallet) -> Convert to Tx Output (to spend) by
 
 ## TX multiple inputs and outputs
 ![Multi IO TX](https://github.com/the-javapocalypse/Blockchain-Developer-NanoDegree/blob/main/Notes/tx%20io.png?raw=true)
+
+
+## Bitcoin
+Network of bitcoin users creating and validating transactions
+
+## Bitcoin Core
+Implementation of bitcoin that encompasses all of the software behind bitcoin
+
+## Debug Console
+Tool that allows you to interact with data on the bitcoin blockchain
