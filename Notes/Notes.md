@@ -127,6 +127,7 @@ When you sweep a private key, you add a private key from a source wallet into th
 Tx Input (amount transferred to my wallet) -> Convert to Tx Output (to spend) by proving ownership of wallet address through digitally signing the transaction using the private key
 
 ## TX multiple inputs and outputs
+UTXO cant be splitted so must create a change back tx to get the change amount back
 ![Multi IO TX](https://github.com/the-javapocalypse/Blockchain-Developer-NanoDegree/blob/main/Notes/tx%20io.png?raw=true)
 
 
@@ -139,3 +140,9 @@ Implementation of bitcoin that encompasses all of the software behind bitcoin
 
 ## Debug Console
 Tool that allows you to interact with data on the bitcoin blockchain
+
+## Bitcoin Full Node Wallet
+A bitcoin wallet that fully validates transactions and blocks
+
+## Transaction Data
+![Transaction Data](https://github.com/the-javapocalypse/Blockchain-Developer-NanoDegree/blob/main/Notes/Tx%20data.png?raw=true)
