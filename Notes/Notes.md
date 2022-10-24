@@ -146,3 +146,38 @@ A bitcoin wallet that fully validates transactions and blocks
 
 ## Transaction Data
 ![Transaction Data](https://github.com/the-javapocalypse/Blockchain-Developer-NanoDegree/blob/main/Notes/Tx%20data.png?raw=true)
+
+## Raw Transaction
+#### Version
+All transactions include information about the Bitcoin Version number so we know which rules this transaction follows.
+
+#### Input Count
+Which is how many inputs were used for this transaction
+
+### Data stored in Input information:
+
+#### Previous output hash
+All inputs reference back to an output (UTXO). This points back to the transaction containing the UTXO that will be spent in this input. The hash value of this UTXO is saved in a reverse order here.
+#### Previous output index
+The transaction may have more than one UTXO which are referenced by their index number. The first index is 0.
+#### Unlocking Script Size
+This is the size of the Unlocking Script in bytes.
+#### Unlocking Script
+This is the hash of the Unlocking Script that fulfills the conditions of the UTXO Locking Script.
+#### Sequence Number
+This is a deprecated feature of bitcoin, currently set to ffffffff by default.
+#### Output Count
+It tells us how many outputs were produced from this transaction.
+
+### Data stored in Output Information:
+
+#### Amount
+The amount of Bitcoin outputted in Satoshis (the smallest bitcoin unit). 10^8 Satoshis = 1 Bitcoin.
+#### Locking Script Size
+This is the size of the Locking Script in bytes.
+#### Locking Script
+This is the hash of the Locking Script that specifies the conditions that must be met to spend this output.
+#### Locktime
+The locktime field indicates the earliest time or the earliest block a transaction can be added to the blockchain. If the locktime is non-zero and less than 500 million, it is interpreted as a block height and miners have to wait until that block height is reached before attempting to add it to a block. If the locktime is above 500 million, it is read as a UNIX timestamp which means the number of seconds since the date January 1st 1970. It is usually 0 which means confirm as soon as possible.
+
+![Raw Transaction](https://github.com/the-javapocalypse/Blockchain-Developer-NanoDegree/blob/main/Notes/raw%20tx.png?raw=true)
