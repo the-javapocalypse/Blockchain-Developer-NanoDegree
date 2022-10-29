@@ -121,7 +121,31 @@ class Blockchain {
     submitStar(address, message, signature, star) {
         let self = this;
         return new Promise(async (resolve, reject) => {
+            try {
+                const msgTime = parseInt(message.split(':')[1]);
+                const currentTime = parseInt(new Date().getTime().toString().slice(0, -3));
 
+                // difference in minutes
+                const diffMins = Math.round(((currentTime - msgTime % 86400000) % 3600000) / 60000); // minute
+
+                // if greater than 5 mins
+                if(diffMins > 5){
+                    reject(Error('Error: Older than 5 minutes'));
+                }
+
+                // verify signature
+                if(!bitcoinMessage.verify(message, address, signature)){
+                    reject(Error('Invalid Signature'));
+                }
+
+                let data = {"owner": message.split(':')[0], "star": star};
+
+                let block = new BlockClass.Block(data);
+                block = await self._addBlock(block);
+                resolve(block);
+            } catch (_e) {
+                reject(_e);
+            }
         });
     }
 
