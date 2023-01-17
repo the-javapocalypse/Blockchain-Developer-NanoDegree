@@ -53,11 +53,9 @@ module.exports = {
     },
 
     goerli: {
-      provider: () => {
-        return new HDWallet(mnemonic, `https://goerli.infura.io/v3/${infuraKey}`, 0)
-      },
-      network_id: '5', // eslint-disable-line camelcase
-      gas: 4465030,
+      provider: new HDWallet(mnemonic, `https://goerli.infura.io/v3/` + infuraKey, 0),
+      network_id: 5,
+      skipDryRun: true
     },
 
     // Another network with more advanced options...
