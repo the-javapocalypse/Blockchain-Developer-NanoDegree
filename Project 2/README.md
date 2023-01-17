@@ -7,7 +7,7 @@ DApps for claiming, buy, transfer, exchange star with blockchain Ethereum.
 ## Specification
 ### Versions
 - Truffle: v5.7.3
-- OpenZeppelin: ^2.2.0
+- OpenZeppelin: 2.3.0
 
 ## Token
 - Name: BBToken
