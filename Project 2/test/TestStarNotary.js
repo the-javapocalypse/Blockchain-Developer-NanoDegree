@@ -67,7 +67,7 @@ it('lets user2 buy a star and decreases its balance in ether', async() => {
     await instance.putStarUpForSale(starId, starPrice, { from: user1 });
     let balanceOfUser1BeforeTransaction = await web3.eth.getBalance(user2);
     const balanceOfUser2BeforeTransaction = await web3.eth.getBalance(user2);
-    await instance.buyStar(starId, { from: user2, value: balance, gasPrice: 0 });
+    await instance.buyStar(starId, { from: user2, value: balance});
     const balanceAfterUser2BuysStar = await web3.eth.getBalance(user2);
     let value = Number(balanceOfUser2BeforeTransaction) - Number(balanceAfterUser2BuysStar);
     assert.equal(value, starPrice);
@@ -103,25 +103,19 @@ it('lets a user transfer a star', async() => {
     // 2. use the transferStar function implemented in the Smart Contract
     // 3. Verify the star owner changed.
 
-    // init different stars
-    const stars = [{
-        id: 420,
-        name: 'Star no 420',
-    }, {
-        id: 69,
-        name: 'star no 69',
-    }];
-
+    // init
+    let user1 = accounts[0];
+    let user2 = accounts[1];
+    let starId = 9;
     let instance = await StarNotary.deployed();
-    await instance.createStar(stars[0].name, stars[0].id, { from: accounts[0] });
-    await instance.createStar(stars[1].name, stars[1].id, { from: accounts[1] });
+    await instance.createStar('Star 1', starId, { from: user1 });
 
     // prepare test case
-    await instance.exchangeStars(stars[0].id, stars[1].id);
+    await instance.transferStar(user2, starId, { from: user1 });
+    let starUser = await instance.ownerOf.call(starId);
 
     // test
-    assert.equal(await instance.ownerOf.call(stars[0].id), accounts[1]);
-    assert.equal(await instance.ownerOf.call(stars[1].id), accounts[0]);
+    assert.equal(starUser, user2);
 });
 
 it('lookUptokenIdToStarInfo test', async() => {
