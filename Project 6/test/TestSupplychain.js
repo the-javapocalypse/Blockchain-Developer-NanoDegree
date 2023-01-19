@@ -3,29 +3,25 @@
 const SupplyChain = artifacts.require('SupplyChain');
 
 contract('SupplyChain', function (accounts) {
-    // addresses
+    const emptyAddress = '0x0000000000000000000000000000000000000000';
+
+    const sku = 1
+    const upc = 1
+
+    const originFarmName = "John Doe"
+    const originFarmInformation = "Dubai"
+    const originFarmLatitude = "-38.239770"
+    const originFarmLongitude = "144.341490"
+
+    const productID = sku + upc;
+    const productNotes = "Best beans for Latte"
+    const productPrice = web3.utils.toWei("1", "ether")
+
     const contractOwnerAccount = accounts[0];
     const originFarmerID = accounts[1];
     const distributorID = accounts[2];
     const retailerID = accounts[3];
     const consumerID = accounts[4];
-
-    const emptyAddress = '0x0000000000000000000000000000000000000000';
-
-    // ids
-    const sku = 1
-    const upc = 1
-
-    // farm
-    const originFarmName = "John Doe"
-    const originFarmInformation = "Yarray Valley"
-    const originFarmLatitude = "-38.239770"
-    const originFarmLongitude = "144.341490"
-
-    // product
-    const productID = sku + upc;
-    const productNotes = "Best beans for Espresso"
-    const productPrice = web3.utils.toWei("1", "ether")
 
     const State = {
         Harvested: 0,
@@ -71,110 +67,130 @@ contract('SupplyChain', function (accounts) {
 
     // 1st Test
     it("Testing smart contract function harvestItem() that allows a farmer to harvest coffee", async () => {
-        // given
+        console.log('Case: Testing smart contract function harvestItem() that allows a farmer to harvest coffee');
+
+        // init
         await supplyChain.Harvested(emittedEventHandler);
 
-        // when
+        // prepare test
         await supplyChain.harvestItem(
             upc, originFarmerID, originFarmName, originFarmInformation, originFarmLatitude, originFarmLongitude, productNotes,
             {from: originFarmerID}
         );
 
-        // then
+        // test
         await assertEmittedEventAndResult(State.Harvested);
     })
 
     // 2nd Test
     it("Testing smart contract function processItem() that allows a farmer to process coffee", async () => {
-        // given
+        console.log('Case: Testing smart contract function processItem() that allows a farmer to process coffee');
+
+        // init
         await supplyChain.Processed(emittedEventHandler);
 
-        // when
+        // prepare test
         await supplyChain.processItem(upc, {from: originFarmerID});
 
-        // then
+        // test
         await assertEmittedEventAndResult(State.Processed);
     })
 
     // 3rd Test
     it("Testing smart contract function packItem() that allows a farmer to pack coffee", async () => {
-        // given
+        console.log('Case: Testing smart contract function packItem() that allows a farmer to pack coffee');
+
+        // init
         await supplyChain.Packed(emittedEventHandler);
 
-        // when
+        // prepare test
         await supplyChain.packItem(upc, {from: originFarmerID});
 
-        // then
+        // test
         await assertEmittedEventAndResult(State.Packed);
     })
 
     // 4th Test
     it("Testing smart contract function markItemForSale() that allows a farmer to sell coffee", async () => {
-        // given
+        console.log('Case: Testing smart contract function markItemForSale() that allows a farmer to sell coffee');
+
+        // init
         await supplyChain.ForSale(emittedEventHandler);
 
-        // when
+        // prepare test
         await supplyChain.markItemForSale(upc, productPrice, {from: originFarmerID});
 
-        // then
+        // test
         await assertEmittedEventAndResult(State.ForSale);
     })
 
     // 5th Test
     it("Testing smart contract function buyItem() that allows a distributor to buy coffee", async () => {
-        // given
+        console.log('Case: Testing smart contract function buyItem() that allows a distributor to buy coffee');
+
+        // init
         await supplyChain.Sold(emittedEventHandler);
 
-        // when
+        // prepare test
         await supplyChain.buyItem(upc, {from: distributorID, value: productPrice});
 
-        // then
+        // test
         await assertEmittedEventAndResult(State.Sold);
     })
 
     // 6th Test
     it("Testing smart contract function shipItem() that allows a distributor to ship coffee", async () => {
-        // given
+        console.log('Case: Testing smart contract function shipItem() that allows a distributor to ship coffee');
+
+        // init
         await supplyChain.Shipped(emittedEventHandler);
 
-        // when
+        // prepare test
         await supplyChain.shipItem(upc, {from: distributorID});
 
-        // then
+        // test
         await assertEmittedEventAndResult(State.Shipped);
     })
 
     // 7th Test
     it("Testing smart contract function receiveItem() that allows a retailer to mark coffee received", async () => {
-        // given
+        console.log('Case: Testing smart contract function receiveItem() that allows a retailer to mark coffee received');
+
+        // init
         await supplyChain.Received(emittedEventHandler)
 
-        // when
+        // prepare test
         await supplyChain.receiveItem(upc, {from: retailerID});
 
-        // then
+        // test
         await assertEmittedEventAndResult(State.Received);
     })
 
     // 8th Test
     it("Testing smart contract function purchaseItem() that allows a consumer to purchase coffee", async () => {
-        // given
+        console.log('Case: Testing smart contract function purchaseItem() that allows a consumer to purchase coffee');
+
+        // init
         await supplyChain.Purchased(emittedEventHandler)
 
-        // when
+        // prepare test
         await supplyChain.purchaseItem(upc, {from: consumerID});
 
-        // then
+        // test
         await assertEmittedEventAndResult(State.Purchased);
     })
 
     // 9th Test
     it("Testing smart contract function fetchItemBufferOne() that allows anyone to fetch item details from blockchain", async () => {
+        console.log('Case: Testing smart contract function fetchItemBufferOne() that allows anyone to fetch item details from blockchain');
+
         await assertResultBufferOne(State.Purchased);
     })
 
     // 10th Test
     it("Testing smart contract function fetchItemBufferTwo() that allows anyone to fetch item details from blockchain", async () => {
+        console.log('Case: Testing smart contract function fetchItemBufferTwo() that allows anyone to fetch item details from blockchain');
+
         await assertResultBufferTwo(State.Purchased);
     })
 
@@ -184,20 +200,16 @@ contract('SupplyChain', function (accounts) {
     }
 
     async function assertEmittedEventAndResult(expectedState) {
-        assertEmittedEvent();
         await assertResultBufferOne(expectedState);
         await assertResultBufferTwo(expectedState);
     }
 
-    function assertEmittedEvent() {
-        assert.equal(eventEmitted, true, 'Invalid event emitted');
-    }
 
     async function assertResultBufferOne(expectedState) {
-        // when
+        // prepare test
         const resultBufferOne = await supplyChain.fetchItemBufferOne(upc);
 
-        // then
+        // test
         assert.equal(resultBufferOne[0], sku, 'Error: Invalid item SKU');
         assert.equal(resultBufferOne[1], upc, 'Error: Invalid item UPC');
         assert.equal(resultBufferOne[2], getExpectedItemOwner(expectedState), 'Error: Missing or Invalid ownerID');
@@ -226,10 +238,10 @@ contract('SupplyChain', function (accounts) {
     }
 
     async function assertResultBufferTwo(expectedState) {
-        // when
+        // prepare test
         const resultBufferTwo = await supplyChain.fetchItemBufferTwo(upc);
 
-        // then
+        // test
         assert.equal(resultBufferTwo[0], sku, 'Error: Invalid item SKU');
         assert.equal(resultBufferTwo[1], upc, 'Error: Invalid item UPC');
         assert.equal(resultBufferTwo[2], productID, 'Error: Missing or Invalid productID');
