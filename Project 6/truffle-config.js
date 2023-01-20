@@ -22,7 +22,7 @@
  *
  */
 
-const HDWalletProvider = require('truffle-hdwallet-provider');
+const HDWallet = require('truffle-hdwallet-provider');
 
 //
 const fs = require('fs');
@@ -55,6 +55,12 @@ module.exports = {
             websockets: true
         },
 
+        goerli: {
+            provider: new HDWallet(mnemonic, `https://goerli.infura.io/v3/` + infuraKey, 0),
+            network_id: 5,
+            skipDryRun: true
+        },
+        
         // Another network with more advanced options...
         // advanced: {
         // port: 8777,             // Custom port
