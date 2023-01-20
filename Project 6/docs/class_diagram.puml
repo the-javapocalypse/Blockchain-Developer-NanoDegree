@@ -1,0 +1,77 @@
+@startuml
+
+class Ownable{
+    address owner()
+    address transferOwnership()
+}
+
+class FarmerRole{
+    boolean isFarmer(address)
+    addFarmer(address)
+    isFarmer(address)
+    renounceFarmer(address)
+    modifier onlyFarmer(address)
+}
+
+class DistributorRole{
+    boolean isDistributor(address)
+    addDistributor(address)
+    isDistributor(address)
+    renounceDistributor(address)
+    modifier onlyDistributor(address)
+}
+
+class RetailerRole{
+    boolean isRetailer(address)
+    addRetailer(address)
+    isRetailer(address)
+    renounceRetailer(address)
+    modifier onlyRetailer(address)
+}
+
+class ConsumerRole{
+    boolean isConsumer(address)
+    addConsumer(address)
+    isConsumer(address)
+    renounceConsumer(address)
+    modifier onlyConsumer(address)
+}
+
+class SupplyChain{
+    {field} mapping(uint => Items) items
+    {field} ...
+    harvestItem(uin _upc, ...)
+    processItem(uint _upc)
+    packItem(uint _upc)
+    markItemForSale(uint _upc)
+    buyItem(uint _upc)
+    shipItem(uint _upc)
+    receiveItem(uint _upc)
+    purchaseItem(uint _upc)
+    modifier verifyCaller(address _address)
+    modifier paidEnough(uint _price)
+    modifier checkValue(uint _upc)
+    modifier doesNotExist(uint _upc
+    modifier harvested(uint _upc)
+    modifier processed(uint _upc)
+    modifier packed(uint _upc)
+    modifier forSale(uint _upc)
+    modifier sold(uint _upc)
+    modifier shipped(uint _upc)
+    modifier purchased(uint _upc)
+    modifier received(uint _upc)
+    
+    {method} ...
+}
+
+Ownable <|-- SupplyChain
+FarmerRole <|-- SupplyChain
+DistributorRole <|-- SupplyChain
+RetailerRole <|-- SupplyChain
+ConsumerRole <|-- SupplyChain
+FarmerRole o-up- Roles
+DistributorRole o-up- Roles
+RetailerRole o-up- Roles
+ConsumerRole o-up- Roles
+
+@enduml

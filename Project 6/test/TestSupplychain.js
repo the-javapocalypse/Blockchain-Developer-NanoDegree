@@ -213,7 +213,7 @@ contract('SupplyChain', function (accounts) {
         assert.equal(resultBufferOne[0], sku, 'Error: Invalid item SKU');
         assert.equal(resultBufferOne[1], upc, 'Error: Invalid item UPC');
         assert.equal(resultBufferOne[2], getExpectedItemOwner(expectedState), 'Error: Missing or Invalid ownerID');
-        assert.equal(resultBufferOne[3], originFarmerID, 'Error: Missing or Invalid originFarmerID');
+        assert.equal(resultBufferOne[3], originFarmerID, 'Error: Missing or Invalid originFrmerID');
         assert.equal(resultBufferOne[4], originFarmName, 'Error: Missing or Invalid originFarmName');
         assert.equal(resultBufferOne[5], originFarmInformation, 'Error: Missing or Invalid originFarmInformation');
         assert.equal(resultBufferOne[6], originFarmLatitude, 'Error: Missing or Invalid originFarmLatitude');

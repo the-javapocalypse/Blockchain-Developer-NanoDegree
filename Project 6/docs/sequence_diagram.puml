@@ -1,0 +1,12 @@
+@startuml
+
+Farmer -> Farmer: Harvest coffee
+Farmer -> Farmer: Pack coffee
+Farmer -> Farmer: Process coffee
+Farmer -> Farmer: Mark coffee for sale
+Farmer <- Distributor: Buy coffee
+Farmer <- Distributor: Ship coffee
+Distributor <- Retailer: Receive coffee
+Retailer <- Consumer: Purchase coffee
+
+@enduml
