@@ -3,11 +3,11 @@
 Deployment
 ---
 ### Etherscan
-FarmerRole: https://goerli.etherscan.io/address/0x4814147B345D136358C0bAe1DA6c404201801E61
-DistributorRole: https://goerli.etherscan.io/address/0x82324488A4Cd02e50b24711c3A2cDc42D91B2D9E
-RetailerRole: https://goerli.etherscan.io/address/0x8Fa9F48249CB6c35Da8c95c13a2391fCb3fC93C6
-ConsumerRole: https://goerli.etherscan.io/address/0x66cf7aa69C3d42282376F058FEc5D5C08529795F
-SupplyChain: https://goerli.etherscan.io/address/0xe965641045361d9d51aaad1567fbbdf0c672743ed808e1691e2d468b6217ec54
+* FarmerRole: https://goerli.etherscan.io/address/0x4814147B345D136358C0bAe1DA6c404201801E61
+* DistributorRole: https://goerli.etherscan.io/address/0x82324488A4Cd02e50b24711c3A2cDc42D91B2D9E
+* RetailerRole: https://goerli.etherscan.io/address/0x8Fa9F48249CB6c35Da8c95c13a2391fCb3fC93C6
+* ConsumerRole: https://goerli.etherscan.io/address/0x66cf7aa69C3d42282376F058FEc5D5C08529795F
+* SupplyChain: https://goerli.etherscan.io/address/0xe965641045361d9d51aaad1567fbbdf0c672743ed808e1691e2d468b6217ec54
 
 ### Logs
 ```
