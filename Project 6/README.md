@@ -197,6 +197,8 @@ Project Plan & Wirteups
 
 | Libraries used | Version |
 |:---:|:---:|
+|Truffle|v5.7.3|
+|node|v.16.13.0|
 |@truffle/contract|^4.3.16|
 |@truffle/hdwallet-provider|^1.4.0|
 |truffle-assertions|^0.9.2|
