@@ -147,6 +147,134 @@ Summary
 
 ```
 
+
+Project Plan & Wirteups
+----
+
+### Activity Diagram
+
+![activity_diagram](docs/activity_diagram.png)
+
+### Sequence Diagram
+
+![sequence_diagram](docs/sequence_diagram.png)
+
+### State Diagram
+
+![state_diagram](docs/state_diagram.png)
+
+### Class Diagram
+
+![class_diagram](docs/class_diagram.png)
+
+
+### Assets & Actors
+
+- Assets:
+  - Coffee
+
+- Actors:
+  - farmer
+  - distributor
+  - retailer
+  - consumer
+
+- Roles:
+
+| Actor |              Role              |
+|:---:|:------------------------------:|
+|Farmer|       can harvest coffee       |
+|Farmer|       can process coffee       |
+|Farmer|        can pack coffee         |
+|Farmer| can mark coffee for sale |
+|Distributor|      can buy coffee      |
+|Distributor|     can ship coffee      |
+|Retailer|    can receive coffee    |
+|Consumer|   can purchase coffee    |
+
+
+### Libraries ️
+
+| Libraries used | Version |
+|:---:|:---:|
+|@truffle/contract|^4.3.16|
+|@truffle/hdwallet-provider|^1.4.0|
+|truffle-assertions|^0.9.2|
+|truffle-hdwallet-provider|^1.0.17|
+|web3.min.js|0.19.0|
+|truffle-contract.js|0.5.5|
+|jquery-3.6.0.min.js|3.6.0|
+
+### IPFS
+
+| Libraries used | Version |
+|:---:|:---:|
+|IPFS not used|N/A|
+
+
+Test Logs
+----
+
+```
+PS D:\Blockchain Nanodegree\Blockchain-Developer-NanoDegree\Project 6> truffle test
+> Something went wrong while attempting to connect to the network at undefined. Check your network configuration.
+connection not open on send()
+Truffle v5.7.3 (core: 5.7.3)
+Node v16.13.0
+PS D:\Blockchain Nanodegree\Blockchain-Developer-NanoDegree\Project 6> truffle test
+Using network 'development'.
+
+
+Compiling your contracts...
+===========================
+> Compiling .\contracts\Migrations.sol
+> Compiling .\contracts\coffeeaccesscontrol\ConsumerRole.sol
+> Compiling .\contracts\coffeeaccesscontrol\DistributorRole.sol
+> Compiling .\contracts\coffeeaccesscontrol\FarmerRole.sol
+> Compiling .\contracts\coffeeaccesscontrol\RetailerRole.sol
+> Compiling .\contracts\coffeeaccesscontrol\Roles.sol
+> Compiling .\contracts\coffeebase\SupplyChain.sol
+> Compiling .\contracts\coffeecore\Ownable.sol
+> Artifacts written to C:\Users\muham\AppData\Local\Temp\test--24868-I8VtHJo0Gc20
+> Compiled successfully using:
+   - solc: 0.5.16+commit.9c3226ce.Emscripten.clang
+ganache-cli accounts used here...
+Contract Owner: accounts[0]  0x27D8D15CbC94527cAdf5eC14B69519aE23288B95
+Farmer: accounts[1]  0x018C2daBef4904ECbd7118350A0c54DbeaE3549A
+Distributor: accounts[2]  0xCe5144391B4aB80668965F2Cc4f2CC102380Ef0A
+Retailer: accounts[3]  0x460c31107DD048e34971E57DA2F99f659Add4f02
+Consumer: accounts[4]  0xD37b7B8C62BE2fdDe8dAa9816483AeBDBd356088
+
+
+  Contract: SupplyChain
+Case: Testing smart contract function harvestItem() that allows a farmer to harvest coffee
+    √ Testing smart contract function harvestItem() that allows a farmer to harvest coffee (1909ms)
+Case: Testing smart contract function processItem() that allows a farmer to process coffee
+    √ Testing smart contract function processItem() that allows a farmer to process coffee (669ms)
+Case: Testing smart contract function packItem() that allows a farmer to pack coffee
+    √ Testing smart contract function packItem() that allows a farmer to pack coffee (754ms)
+Case: Testing smart contract function markItemForSale() that allows a farmer to sell coffee
+    √ Testing smart contract function markItemForSale() that allows a farmer to sell coffee (760ms)
+Case: Testing smart contract function buyItem() that allows a distributor to buy coffee
+    √ Testing smart contract function buyItem() that allows a distributor to buy coffee (1000ms)
+Case: Testing smart contract function shipItem() that allows a distributor to ship coffee
+    √ Testing smart contract function shipItem() that allows a distributor to ship coffee (656ms)
+Case: Testing smart contract function receiveItem() that allows a retailer to mark coffee received
+    √ Testing smart contract function receiveItem() that allows a retailer to mark coffee received (1031ms)
+Case: Testing smart contract function purchaseItem() that allows a consumer to purchase coffee
+    √ Testing smart contract function purchaseItem() that allows a consumer to purchase coffee (1042ms)
+Case: Testing smart contract function fetchItemBufferOne() that allows anyone to fetch item details from blockchain
+    √ Testing smart contract function fetchItemBufferOne() that allows anyone to fetch item details from blockchain (126ms)
+Case: Testing smart contract function fetchItemBufferTwo() that allows anyone to fetch item details from blockchain
+    √ Testing smart contract function fetchItemBufferTwo() that allows anyone to fetch item details from blockchain (153ms)
+
+
+  10 passing (10s)
+
+```
+
+Project Details
+---
 This repository containts an Ethereum DApp that demonstrates a Supply Chain flow between a Seller and Buyer. The user story is similar to any commonly used supply chain process. A Seller can add items to the inventory system stored in the blockchain. A Buyer can purchase such items from the inventory system. Additionally a Seller can mark an item as Shipped, and similarly a Buyer can mark an item as Received.
 
 The DApp User Interface when running should look like...
