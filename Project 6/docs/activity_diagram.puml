@@ -1,0 +1,23 @@
+@startuml
+
+partition Farmer {
+  (*) --> "Harvest coffee"
+  "Harvest coffee" --> "Process coffee"
+  "Process coffee" --> "Pack coffee"
+  "Pack coffee" --> "Mark coffee for sale"
+}
+
+partition Distributor {
+  "Mark coffee for sale" -right-> "Buy coffee"
+  "Buy coffee" --> "Ship coffee"
+}
+
+partition Retailer {
+  "Ship coffee" -right-> "Receive coffee"
+}
+
+partition Consumer {
+  "Receive coffee" -right-> "Purchase coffee"
+}
+
+@enduml
