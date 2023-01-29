@@ -2,6 +2,40 @@
 
 FlightSurety is a sample application project for Udacity's Blockchain course.
 
+## Test Logs
+
+```
+PS D:\Blockchain Nanodegree\Blockchain-Developer-NanoDegree\Project 4> truffle test
+Using network 'development'.
+
+Compiling .\contracts\FlightSuretyData.sol...
+
+
+  Contract: Flight Surety Tests
+    √ (multiparty) has correct initial isOperational() value (117ms)
+    √ (multiparty) can block access to setOperatingStatus() for non-Contract Owner account
+    √ (multiparty) can allow access to setOperatingStatus() for Contract Owner account (255ms)
+    √ (multiparty) can block access to functions using requireIsOperational when operating status is false (559ms)
+    √ (airline) cannot register an Airline using registerAirline() if it is not funded (253ms)
+
+  Contract: Oracles
+Oracle Registered: 4, 0, 2
+Oracle Registered: 2, 9, 8
+Oracle Registered: 8, 1, 0
+Oracle Registered: 6, 0, 7
+Oracle Registered: 2, 6, 5
+Oracle Registered: 3, 6, 4
+Oracle Registered: 0, 4, 1
+Oracle Registered: 3, 0, 9
+Oracle Registered: 5, 1, 2
+    √ can register oracles (6196ms)
+    √ can request flight status (9072ms)
+
+
+  7 passing (18s)
+
+```
+
 ## Install
 
 This repository contains Smart Contract code in Solidity (using Truffle), tests (also using Truffle), dApp scaffolding (using HTML, CSS and JS) and server app scaffolding.
